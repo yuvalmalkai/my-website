@@ -1,0 +1,11 @@
+{
+  "name": "Quit Buddy",
+  "short_name": "QuitBuddy",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F2A28",
+  "theme_color": "#0F2A28",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
