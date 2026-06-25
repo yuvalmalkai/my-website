@@ -6,8 +6,9 @@ export function useAppData(session) {
   const userId = session.user.id
 
   const [profiles, setProfiles] = useState([])
-  const [rollNight, setRollNight] = useState(null)
-  const [participants, setParticipants] = useState([])
+  const [nightState, setNightState] = useState({ rollNight: null, participants: [] })
+  const rollNight = nightState.rollNight
+  const participants = nightState.participants
   const [todayEntries, setTodayEntries] = useState([])
   const [cigaretteCounts, setCigaretteCounts] = useState({})
   const [streaks, setStreaks] = useState({})
@@ -38,17 +39,18 @@ export function useAppData(session) {
     setCigaretteCounts(counts)
 
     const night = rollNightRes.data || null
-    setRollNight(night)
 
+    let parts = []
     if (night) {
       const partsRes = await supabase
         .from('roll_participants')
         .select('*')
         .eq('roll_night_id', night.id)
-      setParticipants(partsRes.data || [])
-    } else {
-      setParticipants([])
+      parts = partsRes.data || []
     }
+    // Set together in one update, so there's never a render where the night
+    // shows "rolled" but the dice results haven't arrived yet.
+    setNightState({ rollNight: night, participants: parts })
 
     if (profilesRes.data) {
       const streakResults = await Promise.all(

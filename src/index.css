@@ -661,6 +661,23 @@ a:focus-visible {
   height: 10px;
 }
 
+.die-stage {
+  perspective: 340px;
+  display: inline-block;
+}
+
+.die-tumbling {
+  animation: die-tumble 0.85s linear infinite !important;
+}
+
+@keyframes die-tumble {
+  0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  25% { transform: rotateX(150deg) rotateY(80deg) rotateZ(40deg); }
+  50% { transform: rotateX(260deg) rotateY(200deg) rotateZ(120deg); }
+  75% { transform: rotateX(330deg) rotateY(300deg) rotateZ(250deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
+
 /* ---------- Roll reveal scoreboard ---------- */
 .overlay-card-wide {
   max-width: 400px;

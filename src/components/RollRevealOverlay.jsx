@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import Die from './Die'
 
-const SPIN_MS = 1400
-const SETTLE_MS = 900
-const SETTLE_MS_ON_ONE = 2000
+const SPIN_MS = 2400
+const SETTLE_MS = 1500
+const SETTLE_MS_ON_ONE = 3000
 
 const ONE_CAPTIONS = ['😬 Wow… tough day tomorrow', '😅 Rough one coming up', '💀 Ouch. Good luck with that one']
 
@@ -35,7 +35,7 @@ export default function RollRevealOverlay({ rolledData, profiles, onClose }) {
 
     const spinInterval = setInterval(() => {
       setSpinValue(1 + Math.floor(Math.random() * 6))
-    }, 90)
+    }, 130)
 
     const settleTimeout = setTimeout(() => {
       clearInterval(spinInterval)
@@ -103,7 +103,9 @@ export default function RollRevealOverlay({ rolledData, profiles, onClose }) {
               className={`dice-row roll-spotlight ${caption ? 'dramatic' : ''}`}
               style={{ justifyContent: 'center', margin: '18px 0 6px' }}
             >
-              <Die value={spinValue} size="lg" />
+              <div className="die-stage">
+                <Die value={spinValue} size="lg" spinning={phase === 'spinning'} />
+              </div>
             </div>
             <p className="roll-caption">{caption || '\u00A0'}</p>
           </>
