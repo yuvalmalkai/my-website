@@ -635,3 +635,96 @@ a:focus-visible {
   text-align: center;
   padding: 0 24px;
 }
+
+/* ---------- Die size variants ---------- */
+.die-sm {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.die-sm .pip {
+  width: 4px;
+  height: 4px;
+}
+
+.die-lg {
+  width: 72px;
+  height: 72px;
+  padding: 11px;
+  border-radius: 16px;
+}
+
+.die-lg .pip {
+  width: 10px;
+  height: 10px;
+}
+
+/* ---------- Roll reveal scoreboard ---------- */
+.overlay-card-wide {
+  max-width: 400px;
+}
+
+.roll-spotlight {
+  filter: drop-shadow(0 0 0 rgba(232, 163, 61, 0));
+  transition: filter 0.3s ease;
+}
+
+.roll-spotlight.dramatic {
+  animation: roll-flash 0.6s ease;
+}
+
+@keyframes roll-flash {
+  0% { filter: drop-shadow(0 0 18px rgba(226, 96, 79, 0.9)); }
+  100% { filter: drop-shadow(0 0 0 rgba(226, 96, 79, 0)); }
+}
+
+.roll-caption {
+  min-height: 24px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--coral);
+  margin: 0 0 14px;
+}
+
+.roll-scoreboard {
+  margin-top: 6px;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+}
+
+.roll-score-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 6px;
+  border-radius: 8px;
+}
+
+.roll-score-row.is-current {
+  background: var(--surface-2);
+}
+
+.roll-score-name {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.roll-score-dice {
+  display: flex;
+  gap: 4px;
+}
+
+.roll-score-total {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--amber);
+  min-width: 22px;
+  text-align: right;
+}

@@ -23,6 +23,10 @@ React + Vite + Supabase.
   day-by-day record for anyone in the group.
 - Push notifications alert everyone the moment someone crosses half their limit
   for the day - works even if their browser/app is fully closed.
+- A reminder push at 8pm nudges everyone to roll, and a midnight push
+  congratulates everyone still under their limit for the night.
+- The group roll is a slow, dramatic round-robin - one die per person per
+  round, scoreboard filling in live, with extra commentary if someone rolls a 1.
 
 ## One-time setup (do this once, on your computer)
 
